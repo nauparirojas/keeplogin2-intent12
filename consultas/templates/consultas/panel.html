@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consultas Médicas - UNCP</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #f8fafc;
+        margin: 0;
+      }
+      nav {
+        background: #0f172a;
+        color: #fff;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      a {
+        color: #38bdf8;
+        margin-left: 1rem;
+        text-decoration: none;
+      }
+      .box {
+        max-width: 1000px;
+        margin: 2rem auto;
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 12px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #e2e8f0;
+        padding: 0.6rem;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <strong>Gestión de Consultas Médicas UNCP</strong>
+      <div>
+        <a href="/citas/nueva/">Agendar cita</a>
+        <a href="/pacientes/nuevo/">Nuevo paciente</a>
+        <a href="/admin/">Admin</a>
+      </div>
+    </nav>
+    <div class="box">
+      {% if alerta_citas %}
+      <p><strong>Aviso:</strong> {{ alerta_citas }}</p>
+      {% endif %} {% for m in messages %}
+      <p>{{ m }}</p>
+      {% endfor %}
+      <h2>Agenda de Citas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in citas %}
+          <tr>
+            <td>{{ c.fecha }}</td>
+            <td>{{ c.hora }}</td>
+            <td>{{ c.paciente }}</td>
+            <td>{{ c.medico }}</td>
+            <td>{{ c.get_estado_display }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5">No hay citas registradas.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

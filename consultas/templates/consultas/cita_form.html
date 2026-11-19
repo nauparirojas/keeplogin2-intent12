@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Formulario Médico</title>
+<style>body{font-family:system-ui,sans-serif;background:#f8fafc;padding:2rem}.card{max-width:520px;margin:0 auto;background:#fff;padding:2rem;border-radius:12px}label{display:block;margin-top:.7rem;font-weight:600}input,select,textarea{width:100%;padding:.6rem;border:1px solid #cbd5e1;border-radius:8px;box-sizing:border-box}button{margin-top:1.2rem;padding:.7rem 1.2rem;background:#0284c7;color:#fff;border:0;border-radius:8px;cursor:pointer}.errorlist{color:#dc2626}</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Formulario</h2>
+    <form method="post">{% csrf_token %}{{ form.non_field_errors }}{{ form.as_p }}<button type="submit">Guardar</button> <a href="/">Volver</a></form>
+  </div>
+</body>
+</html>

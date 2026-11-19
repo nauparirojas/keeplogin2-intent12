@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Centro Médico UNCP - Login</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #0f172a;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .card {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 380px;
+      }
+      label {
+        display: block;
+        margin-top: 0.7rem;
+        font-weight: 600;
+      }
+      input {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        margin-top: 1.2rem;
+        padding: 0.7rem;
+        background: #0284c7;
+        color: #fff;
+        border: 0;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Centro Médico UNCP</h2>
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Ingresar</button>
+      </form>
+    </div>
+  </body>
+</html>
